@@ -34,6 +34,8 @@ import org.apache.pig.builtin.ENDSWITH;
 import org.apache.pig.builtin.STRSPLIT;
 import org.apache.pig.builtin.SUBSTRING;
 import org.apache.pig.builtin.TRIM;
+import org.apache.pig.builtin.LTRIM;
+import org.apache.pig.builtin.RTRIM;
 import org.apache.pig.builtin.EqualsIgnoreCase;
 import org.apache.pig.data.Tuple;
 import org.apache.pig.data.TupleFactory;
@@ -141,7 +143,45 @@ public class TestStringUDFs {
         testTuple = TupleFactory.getInstance().newTuple();
         assertNull(trim.exec(testTuple));
     }
+
+    @Test
+    public void testLtrim() throws IOException {
+        LTRIM trim = new LTRIM();
+        Tuple testTuple = Util.buildTuple("nospaces");
+        assertEquals("nospaces", trim.exec(testTuple));
+        
+        testTuple = Util.buildTuple("spaces right    ");
+        assertEquals("spaces right    ", trim.exec(testTuple));
+        
+        testTuple = Util.buildTuple("    spaces left");
+        assertEquals("spaces left", trim.exec(testTuple));
+        
+        testTuple = Util.buildTuple("    spaces both    ");
+        assertEquals("spaces both    ");
+        
+        testTuple = TupleFactory.getInstance().newTuple();
+        assertNull(trim.exec(testTuple));
+    }
     
+    @Test
+    public void testRtrim() throws IOException {
+        RTRIM trim = new RTRIM();
+        Tuple testTuple = Util.buildTuple("nospaces");
+        assertEquals("nospaces", trim.exec(testTuple));
+        
+        testTuple = Util.buildTuple("spaces right    ");
+        assertEquals("spaces right", trim.exec(testTuple));
+        
+        testTuple = Util.buildTuple("    spaces left");
+        assertEquals("    spaces left", trim.exec(testTuple));
+        
+        testTuple = Util.buildTuple("    spaces both    ");
+        assertEquals("spaces both");
+        
+        testTuple = TupleFactory.getInstance().newTuple();
+        assertNull(trim.exec(testTuple));
+    }
+
     @Test 
     public void testSplit() throws IOException {
         STRSPLIT splitter = new STRSPLIT();
