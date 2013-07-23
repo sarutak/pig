@@ -44,7 +44,7 @@ public class RTRIM extends EvalFunc<String> {
             String str = (String) input.get(0);
             if (str == null) return null;
             if (str.length() == 0) return str;
-            return str.replaceFirst("[^ ]* +$", "");
+            return str.replaceFirst(" +$", "");
         } catch (ExecException e) {
             warn("Error reading input: " + e.getMessage(), PigWarning.UDF_WARNING_1);
             return null;
