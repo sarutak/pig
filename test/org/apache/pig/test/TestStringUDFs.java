@@ -157,7 +157,7 @@ public class TestStringUDFs {
         assertEquals("spaces left", trim.exec(testTuple));
         
         testTuple = Util.buildTuple("    spaces both    ");
-        assertEquals("spaces both    ");
+        assertEquals("spaces both    ", trim.exec(testTuple));
         
         testTuple = TupleFactory.getInstance().newTuple();
         assertNull(trim.exec(testTuple));
@@ -176,7 +176,7 @@ public class TestStringUDFs {
         assertEquals("    spaces left", trim.exec(testTuple));
         
         testTuple = Util.buildTuple("    spaces both    ");
-        assertEquals("spaces both");
+        assertEquals("spaces both", trim.exec(testTuple));
         
         testTuple = TupleFactory.getInstance().newTuple();
         assertNull(trim.exec(testTuple));
