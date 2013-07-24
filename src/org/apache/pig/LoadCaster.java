@@ -136,7 +136,6 @@ public interface LoadCaster {
     /**
      * Cast data from bytearray to BigInteger value.
      * @param b bytearray to be cast.
-     * @param fieldSchema field schema for the output bag
      * @return BigInteger value.
      * @throws IOException if the value cannot be cast.
      */
@@ -145,7 +144,6 @@ public interface LoadCaster {
     /**
      * Cast data from bytearray to BigDecimal value.
      * @param b bytearray to be cast.
-     * @param fieldSchema field schema for the output bag
      * @return BigInteger value.
      * @throws IOException if the value cannot be cast.
      */
